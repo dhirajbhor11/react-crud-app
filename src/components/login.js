@@ -7,6 +7,7 @@ import 'firebase/analytics';
 import 'firebase/auth';
 import { Link } from 'react-router-dom';
 import Notiflix from 'notiflix-react';
+import Navbars from './navbar'
 
 class Login extends React.Component {
     constructor(props){
@@ -50,6 +51,8 @@ class Login extends React.Component {
 
     render(){
         return(
+            <div>
+            <Navbars/>
             <div className="loginView">
                 <Card style={{width:"30rem"}}>
                     <Card.Header> <h1> Log In</h1></Card.Header>
@@ -85,6 +88,7 @@ class Login extends React.Component {
                             <Link to="/signup">Sign Up</Link>
                         </Card.Footer>
                 </Card>
+            </div>
             </div>
         );
     }

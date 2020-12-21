@@ -7,7 +7,7 @@ import 'firebase/auth';
 import 'firebase/database';
 import { Link, Redirect } from 'react-router-dom';
 import Notiflix from 'notiflix-react';
-
+import Navbars from './navbar';
 class Signup extends React.Component{
     constructor(props){
         super(props);
@@ -69,9 +69,7 @@ class Signup extends React.Component{
             }).catch((error)=>{
                 Notiflix.Notify.Failure(error.message);
             });
-            // event.preventDefault();
-            return <Redirect to="/dashboard" />
-            
+            event.preventDefault();
         }
     }
 
@@ -89,6 +87,8 @@ class Signup extends React.Component{
     
     render(){
         return(
+            <div>
+            <Navbars/>
             <div className="signupForm">
                 <Card style={{width:"40rem"}}>
                     <Card.Header><h1> Sign Up </h1></Card.Header>
@@ -144,6 +144,7 @@ class Signup extends React.Component{
                         <Link to="/login">Log In</Link>
                     </Card.Footer>
                 </Card>
+            </div>
             </div>
         );
     }

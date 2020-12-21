@@ -1,4 +1,3 @@
-
 import './App.css';
 import Dashboard from './components/dashboard';
 import React from 'react';
@@ -9,7 +8,6 @@ import 'firebase/database';
 import Routers from './components/routers';
 import {BrowserRouter as Router, Redirect } from 'react-router-dom';
 import "notiflix-react/dist/notiflix-react-1.4.0.css";
-import Navbar from './components/navbar';
 
 class App extends React.Component{
   constructor(props){
@@ -47,7 +45,6 @@ class App extends React.Component{
     return (
       <div className="App">
         <Router>
-        <Navbar userStatus={this.state.isUserLoggedIn}/>
           {display}
         </Router>
       </div> 

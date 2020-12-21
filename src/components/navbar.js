@@ -1,11 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Form,Button,Card,InputGroup, Nav,Navbar as BNavbar,DropdownButton,Dropdown,ButtonGroup} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap';
 import firebase from 'firebase';
 import 'firebase/database';
 
-class Navbar extends React.Component {
+class Navbars extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -46,8 +47,8 @@ class Navbar extends React.Component {
             <BNavbar.Toggle aria-controls="basic-navbar-nav" />
             <BNavbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Link to="/"><Nav.Link>Home</Nav.Link></Link>   
-                <Link to="/about"><Nav.Link>About</Nav.Link></Link>
+                <LinkContainer to="/"><Nav.Link>Home</Nav.Link></LinkContainer>   
+                <LinkContainer to="/about"><Nav.Link>About</Nav.Link></LinkContainer>
                 
               </Nav>
             {(this.state.userName)? <DropdownButton
@@ -67,16 +68,19 @@ class Navbar extends React.Component {
                 </Dropdown.Menu>
             </DropdownButton> 
                 :
-                <div>
-                <Link to="/signup" style={{color: '#FFF',margin: '20px'}}>Sign Up</Link>
-                <Link to="/login" style={{color: '#FFF' }}>Log In</Link>
-                </div>    
+            <Nav activeKey={window.location.pathname}>
+                <LinkContainer to="/signup">
+                    <Nav.Link>SignUp</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/login">
+                    <Nav.Link>Login</Nav.Link>
+                </LinkContainer>
+            </Nav>   
             }
-
             </BNavbar.Collapse>
           </BNavbar>
         );
     }
 }
 
-export default Navbar;
+export default Navbars;

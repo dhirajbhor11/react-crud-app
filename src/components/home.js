@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Navbars from './navbar';
 
 
 class Home extends React.Component{
@@ -11,9 +11,10 @@ class Home extends React.Component{
     render(){
         return(
             <div>
-                    <Link to="/login"> Log In</Link>
-                    <br />
-                    <Link to="/signup">Sign up</Link>
+                <Navbars/>
+                <Link to="/login"> Log In</Link>
+                <br />
+                <Link to="/signup">Sign up</Link>
             </div>
         );
     }

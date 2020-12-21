@@ -4,6 +4,7 @@ import {Button,Card,Form } from 'react-bootstrap';
 import Notiflix from 'notiflix-react';
 import {Redirect,Link} from 'react-router-dom';
 import  './css/login.css';
+import Navbars from './navbar';
 
 
 class ForgetPassword extends React.Component {
@@ -35,6 +36,8 @@ class ForgetPassword extends React.Component {
           return <Redirect to={this.state.redirect} />
         }
         return(
+            <div>
+            <Navbars/>
             <div className="loginView">
                 <Card style={{width:"30rem"}}>
                     <Card.Header> <h1>Forgot Password </h1></Card.Header>
@@ -56,6 +59,7 @@ class ForgetPassword extends React.Component {
                         </Button>
                     </Card.Footer>
                 </Card>      
+            </div>
             </div>
         );
     }

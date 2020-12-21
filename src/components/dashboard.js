@@ -3,6 +3,7 @@ import { Card, Jumbotron,Button } from 'react-bootstrap';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth';
+import Navbars from './navbar';
 
 class Dashboard extends React.Component{
     constructor(){
@@ -23,6 +24,7 @@ class Dashboard extends React.Component{
     render(){
         return(
             <div>
+            <Navbars/>
                 <Jumbotron>
                     <h1>Welcome </h1>
                 </Jumbotron>
