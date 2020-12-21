@@ -9,7 +9,7 @@ import 'firebase/database';
 import Routers from './components/routers';
 import {BrowserRouter as Router, Redirect } from 'react-router-dom';
 import "notiflix-react/dist/notiflix-react-1.4.0.css";
-
+import Navbar from './components/navbar';
 
 class App extends React.Component{
   constructor(props){
@@ -18,9 +18,6 @@ class App extends React.Component{
     this.state ={
       isUserLoggedIn:false
     }
-
-
-
    }
 
    componentDidMount(){
@@ -34,27 +31,27 @@ class App extends React.Component{
         this.setState({
           isUserLoggedIn : false
         });
-        console.log("user not found");
       }
     })
 
    }
 
   render(){
+    let display;
     if(this.state.isUserLoggedIn){
-      return <Dashboard />
-    }else {
+      display = <Dashboard />
+    }else{
+      display = <Routers />;
+    }
 
     return (
       <div className="App">
         <Router>
-          <Routers/>
-          <Redirect to="/" />
+        <Navbar userStatus={this.state.isUserLoggedIn}/>
+          {display}
         </Router>
       </div> 
-
     );
-    }
   }
 }
 

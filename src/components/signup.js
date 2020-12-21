@@ -4,7 +4,8 @@ import {Alert, Button, Card, Form, InputGroup }from 'react-bootstrap';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth';
-import { Link } from 'react-router-dom';
+import 'firebase/database';
+import { Link, Redirect } from 'react-router-dom';
 import Notiflix from 'notiflix-react';
 
 class Signup extends React.Component{
@@ -58,14 +59,18 @@ class Signup extends React.Component{
             element.focus();
             event.preventDefault();
         }else {
-            console.log(this.emailId.current.value+" && "+ this.password.current.value);
             firebase.auth().createUserWithEmailAndPassword(this.emailId.current.value,this.password.current.value).then((value)=>{
-                console.log(value);
-                Notiflix.Notify.Success(value.message);
+                let db = firebase.firestore();
+                db.collection("users").doc(value.user.uid).set({
+                    name:this.name.current.value,
+                    email : this.emailId.current.value
+                });
+                Notiflix.Notify.Success("Welcome");
             }).catch((error)=>{
                 Notiflix.Notify.Failure(error.message);
             });
-            event.preventDefault();
+            // event.preventDefault();
+            return <Redirect to="/dashboard" />
             
         }
     }

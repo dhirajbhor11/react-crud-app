@@ -25,7 +25,7 @@ class Login extends React.Component {
 
         firebase.auth().signInWithEmailAndPassword(this.emailId.current.value,this.password.current.value).then((value)=>{
             Notiflix.Notify.Success("Welcome");
-            console.log(value);
+            console.log(value); 
         }).catch((error)=>{
             Notiflix.Notify.Failure(error.code);
             console.log(error);
@@ -47,14 +47,6 @@ class Login extends React.Component {
         }
     }
 
-    singInWithGoogle= () =>{
-       let key = {
-        clientId : "863529365696-167rojfhb4shkij5a9j26qo9e48pml6l.apps.googleusercontent.com",
-        clientSecret : "nOlzZHZZSEj0tXHoI0GZQrcd"
-       };
-       
-      var provider = new firebase.auth.GoogleAuthProvider();
-    }
 
     render(){
         return(

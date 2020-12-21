@@ -8,6 +8,13 @@ class Dashboard extends React.Component{
     constructor(){
         super();
     }
+
+    componentDidMount(){
+    
+       //add({id:"dhirajbhor",nname:"aditya varal",email:"adi@29gmail.com"});
+        // console.log(useRef);
+    }
+
     handleLogOut = () =>{
         firebase.auth().signOut();
     }
